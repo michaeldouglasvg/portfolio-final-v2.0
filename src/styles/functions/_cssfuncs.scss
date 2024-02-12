@@ -1,0 +1,147 @@
+@forward "../config/variables";
+
+%extends-achortags {
+    text-decoration: none;
+    color: $text-light-gray;
+}
+
+%extens-inputandbtns {
+    outline: none;
+    border: none;
+    text-align: center;
+}
+@mixin grid-auto-flow-element() {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    grid-gap: 1rem;
+    place-items: center;
+}
+@mixin table-flex-content($direction: column) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin heading-colors($name) {
+    @if $name == p {
+        color: $primary-heading;
+    } @else if $name == s {
+        color: $secondary-heading;
+    }
+    @else if $name == t {
+        color: $tatiary-heading;
+    }
+    @else if $name == d {
+        color: $decoratoer-heading;
+    } @else {
+        color: $normal-heading;
+    }
+}
+
+@function main-display-function($color) {
+    @if (lightness($color) > 70) {
+        @return $text-black-main;
+    } @else {
+        @return $text-white;
+    }
+}
+
+@mixin make-button() {
+    padding: 1.1rem 2rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background: $primary-heading;
+    text-align: center;
+    color: $text-white;
+    &:hover {
+        transform: scale(.99);
+    }
+}
+
+@mixin make-input($px, $py, $cl) {
+    color: $cl;
+    padding: $py $px;
+    @extend %extens-inputandbtns;
+}
+
+@mixin make-anchortag($px, $py, $bg, $bd, $cl) {
+    background: $bg;
+    padding: $py $px;
+    @extend %extens-inputandbtns;
+    border: $bd;
+    color: $cl;
+    @extend %extends-achortags;
+}
+
+@mixin boder-direction($direction: bottom, $color, $density) {
+    @if $direction == bottom {
+        border-bottom: $density solid $color;
+    } @else if $direction == top {
+        border-top: $density solid $color;
+    } @else if $derection == right {
+        border-right: $density solid $color;
+    } @else {
+        border-left: $density solid $color;
+    }
+}
+
+@mixin before-after-elements($priority: before, $wd, $ht, $content, $top, $bottom, $bg) {
+    @if $priority == before {
+        &::before {
+            content: $content;
+            position: absolute;
+            top:$top;
+            bottom: $bottom;
+            width: $wd;
+            height: $ht;
+            color: $bg;
+            background: $bg;
+        }
+    }@else {
+        &::after {
+            content: $content;
+            position: absolute;
+            top:$top;
+            bottom: $bottom;
+            width: $wd;
+            height: $ht;
+            color: $bg;
+            background: $bg;
+        }
+    } 
+}
+
+
+@mixin responsive-text($min, $range, $max, $screenname: w) {
+    @if $screenname == w {
+        font-size: clamp(#{$min}rem, #{$range}cqi, #{$max}rem);
+    } @else {
+        font-size: clamp(#{$min}rem, #{$range}cqb, #{$max}rem);
+    }
+}
+
+@mixin responsive-padding($min, $max) {
+    padding-left: clamp(#{$min}rem, #{$max}rem);
+    padding-right: clamp(#{$min}rem, #{$max}rem);
+}
+
+@mixin make-container() {
+    container-type: inline-size;
+}
+
+@mixin dynamic-flex-and-grid($type: flex, $min:22) {
+    @if ($type == flex) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    } @else {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(#{$min}rem, 100%), 1fr));
+    }
+}
+
