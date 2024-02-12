@@ -34,9 +34,8 @@ const Content = () => {
         <div className="skill-sets" data-aos="zoom-out-up"><p>Passionate:</p> &nbsp; <span className='element'></span></div>
         <div className="description" data-aos="zoom-out-up"><p>Passionate about crafting innovative solutions through web and app development, I delve into the realms of Machine Learning and Data Science to drive meaningful insights and create impactful experiences. With a fervent dedication to technology, I strive to push boundaries and make a difference.</p></div>
         <div className="buttons">
-            <button>Resume</button>
-            <button>Hire me</button>
-            <button>Certificates</button>
+            <button>Hire&nbsp;me</button>
+            <button>Who&nbsp;I&nbsp;am</button>
         </div>
       </article>
       <article className="right">

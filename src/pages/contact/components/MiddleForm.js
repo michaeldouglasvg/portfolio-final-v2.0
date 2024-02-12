@@ -14,29 +14,29 @@ const MiddleForm = () => {
      <p>Welcome to my portfolio! Stay connected by reaching out through the contact form. Share your thoughts, inquiries, or collaboration ideas with ease. Your message is valuable, and I'm here to listen.</p>
      </div>
      <div className="form">
-        <form>
+        <form name="contact" netlify>
             <div className="headings"><h3>Enter valid information *</h3></div>
             <div className="groups">
                 <div className="form-group">
                     <span>Your Full Name</span>
-                    <input type='text' placeholder='Eg: Michael Douglas'/>
+                    <input type='text' placeholder='Eg: Michael Douglas' name='name'/>
                 </div>
                 <div className="form-group">
                     <span>Email Address</span>
-                    <input type='text' placeholder='Eg: Michael Douglas'/>
+                    <input type='text' placeholder='Eg: Michael Douglas' name='email'/>
                 </div>
             </div>
             <div className="form-group">
                 <span>Subject</span>
-                <input type='text' placeholder='Eg: Michael Douglas'/>
+                <input type='text' placeholder='Eg: Michael Douglas' name='subject'/>
             </div>
             <div className="form-group">
                 <span>Your message</span>
-                <textarea placeholder='Enter your message here...'/>
+                <textarea placeholder='Enter your message here...' name='message'/>
             </div>
-           {onsubmit && <div className="form-group">
-                <button onClick={() => setOnsubmit()}>Send Message</button>
-            </div>}
+            <div className="form-group">
+                <button onClick={() => setOnsubmit()} type="submit" style={{cursor: onsubmit?"pointer":"not-allowed"}} disabled={!onsubmit}>Send Message</button>
+            </div>
         </form>
      </div>
      <div className="notice">
